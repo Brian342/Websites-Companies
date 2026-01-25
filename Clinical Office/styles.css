@@ -311,9 +311,25 @@ a:hover {
     transition: all var(--transition-fast);
 }
 
-/* ========================================
-   HERO SECTION
-   ======================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
 
 .hero {
     max-width: 1200px;
@@ -323,12 +339,30 @@ a:hover {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: center;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
 }
 
-.hero-content h1 {
-    margin-bottom: 1rem;
-    color: var(--text-dark);
-    animation: fadeInUp 0.8s ease-in-out;
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    background-attachment: fixed;
+    z-index: -1;
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    animation: fadeInUp 0.8s ease-in-out 0.3s backwards;
 }
 
 .hero-subtitle {
@@ -348,39 +382,6 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.hero-placeholder {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: var(--radius-xl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 6rem;
-    box-shadow: var(--shadow-lg);
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
 }
 
 /* ========================================
@@ -404,16 +405,25 @@ a:hover {
     text-align: center;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
+    overflow: hidden;
+}
+
+.stat-card-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+    transition: transform var(--transition-base);
+}
+
+.stat-card:hover .stat-card-img {
+    transform: scale(1.05);
 }
 
 .stat-card:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-5px);
-}
-
-.stat-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
 }
 
 .stat-card h3 {
@@ -577,10 +587,15 @@ a:hover {
     margin-bottom: 2rem;
 }
 
-.cta-section .btn {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
+.cta-section .btn {rgba(0, 102, 204, 0.8), rgba(0, 168, 150, 0.8)), url('https://images.unsplash.com/photo-1576091160675-0246b3b60f1d?w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden
 /* ========================================
    PAGE HEADER
    ======================================== */
@@ -647,9 +662,12 @@ a:hover {
 }
 
 .team-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-5px);
-}
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-md)
 
 .team-image {
     font-size: 4rem;
@@ -1436,10 +1454,9 @@ body.dark-mode .footer {
         order: -1;
     }
 
-    .hero-placeholder {
-        width: 250px;
-        height: 250px;
-        font-size: 4rem;
+    .hero-img {
+        max-width: 280px;
+        height: auto;
     }
 
     .hero-buttons {
@@ -1448,6 +1465,10 @@ body.dark-mode .footer {
 
     .btn {
         width: 100%;
+    }
+
+    .stat-card-img {
+        height: 200px;
     }
 
     .services-grid,
@@ -1519,6 +1540,10 @@ body.dark-mode .footer {
     .footer-content {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+
+    .team-image {
+        height: 250px;
     }
 }
 
