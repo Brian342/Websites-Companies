@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Clinical Office. Phone, email, physical address, and clinic hours. Get in touch with our healthcare team today.">
+    <meta name="keywords" content="contact, phone, email, address, clinic hours, Kenya">
+    <title>Contact Us - Clinical Office</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⚕️</span>
+                <span class="logo-text">Clinical Office</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="appointments.html" class="cta-button">Book Appointment</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Contact Us</h1>
+        <p>Get in touch with our friendly healthcare team</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="content-section">
+        <div class="contact-layout">
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <h2>Send us a Message</h2>
+                <p>Have questions? Fill out the form below and we'll get back to you within 24 hours.</p>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Your Name *</label>
+                        <input 
+                            type="text" 
+                            id="contact-name" 
+                            name="name" 
+                            placeholder="John Doe"
+                            required
+                            aria-required="true"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email Address *</label>
+                        <input 
+                            type="email" 
+                            id="contact-email" 
+                            name="email" 
+                            placeholder="john@example.com"
+                            required
+                            aria-required="true"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-phone">Phone Number</label>
+                        <input 
+                            type="tel" 
+                            id="contact-phone" 
+                            name="phone" 
+                            placeholder="+254 700 123 456"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-subject">Subject *</label>
+                        <select id="contact-subject" name="subject" required aria-required="true">
+                            <option value="">-- Select a Subject --</option>
+                            <option value="appointment">Appointment Inquiry</option>
+                            <option value="services">Services Question</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="complaint">Complaint</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-message">Message *</label>
+                        <textarea 
+                            id="contact-message" 
+                            name="message" 
+                            placeholder="Tell us how we can help..."
+                            rows="6"
+                            required
+                            aria-required="true"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                </form>
+
+                <div id="contactSuccess" class="success-message" style="display: none;">
+                    <h3>✓ Message Sent Successfully</h3>
+                    <p>Thank you for contacting us. We'll respond within 24 business hours.</p>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info-wrapper">
+                <h2>Contact Information</h2>
+
+                <!-- Phone -->
+                <div class="contact-block">
+                    <h3>📞 Phone</h3>
+                    <p class="contact-detail"><strong>+254 700 123 456</strong></p>
+                    <p class="contact-detail"><strong>+254 20 234 5678</strong></p>
+                    <p class="contact-note">Monday-Saturday: 8:00 AM - 6:00 PM<br>Sunday: Closed (Emergency line available)</p>
+                </div>
+
+                <!-- Email -->
+                <div class="contact-block">
+                    <h3>✉️ Email</h3>
+                    <p class="contact-detail"><a href="mailto:info@clinicaloffice.co.ke"><strong>info@clinicaloffice.co.ke</strong></a></p>
+                    <p class="contact-detail"><a href="mailto:appointments@clinicaloffice.co.ke"><strong>appointments@clinicaloffice.co.ke</strong></a></p>
+                    <p class="contact-note">Response time: Within 24 hours</p>
+                </div>
+
+                <!-- Address -->
+                <div class="contact-block">
+                    <h3>📍 Physical Address</h3>
+                    <p class="contact-detail"><strong>Clinical Office</strong></p>
+                    <p class="contact-detail">123 Health Street<br>Nairobi, Kenya 00100</p>
+                    <p class="contact-note">Near Kenyatta Avenue<br>Free parking available</p>
+                </div>
+
+                <!-- Hours -->
+                <div class="contact-block">
+                    <h3>⏰ Clinic Hours</h3>
+                    <div class="hours-table">
+                        <div class="hour-row">
+                            <span>Monday - Friday</span>
+                            <span><strong>8:00 AM - 6:00 PM</strong></span>
+                        </div>
+                        <div class="hour-row">
+                            <span>Saturday</span>
+                            <span><strong>9:00 AM - 4:00 PM</strong></span>
+                        </div>
+                        <div class="hour-row">
+                            <span>Sunday</span>
+                            <span>Closed</span>
+                        </div>
+                        <div class="hour-row">
+                            <span>Public Holidays</span>
+                            <span>Closed</span>
+                        </div>
+                    </div>
+                    <p class="contact-note small-text">Emergency services available 24/7</p>
+                </div>
+
+                <!-- Quick Access -->
+                <div class="contact-block">
+                    <h3>⚡ Quick Actions</h3>
+                    <a href="appointments.html" class="btn btn-primary btn-block">Book Appointment</a>
+                    <a href="tel:+254700123456" class="btn btn-secondary btn-block">Call Us Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="content-section bg-light">
+        <h2>Find Us on the Map</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.7656523370767!2d36.80197!3d-1.282127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f17d6b3c5c5c5%3A0x5c5c5c5c5c5c5c5c!2s123%20Health%20Street%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1234567890"
+                width="100%"
+                height="400"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Clinical Office Location"
+            ></iframe>
+        </div>
+        <p class="map-note">Interactive map showing our clinic location. Use it for directions via Google Maps or your preferred navigation app.</p>
+    </section>
+
+    <!-- Directions -->
+    <section class="content-section">
+        <h2>Getting Here</h2>
+        <div class="directions-grid">
+            <div class="direction-card">
+                <h3>🚗 By Car</h3>
+                <p>From the city center, head towards Kenyatta Avenue. Turn right on Health Street. Our clinic is on the left side, marked with the blue and green sign. Free parking is available in the compound.</p>
+            </div>
+            <div class="direction-card">
+                <h3>🚕 By Taxi/Uber</h3>
+                <p>Give your driver this address: 123 Health Street, Nairobi, Kenya 00100. The clinic is easily accessible from major taxi stands and Uber is widely available in the area.</p>
+            </div>
+            <div class="direction-card">
+                <h3>🚌 By Public Transport</h3>
+                <p>Several matatu routes pass near our location. Exit at Kenyatta Avenue or Health Street junction. The clinic is within walking distance from the main transport hubs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessibility -->
+    <section class="content-section bg-light">
+        <h2>Accessibility & Facilities</h2>
+        <div class="facilities-list">
+            <div class="facility-item">
+                <span class="facility-icon">♿</span>
+                <p><strong>Wheelchair Accessible</strong> - All entrances and examination rooms are accessible</p>
+            </div>
+            <div class="facility-item">
+                <span class="facility-icon">🅿️</span>
+                <p><strong>Free Parking</strong> - Convenient parking available for patients and visitors</p>
+            </div>
+            <div class="facility-item">
+                <span class="facility-icon">🪑</span>
+                <p><strong>Comfortable Waiting Area</strong> - Climate-controlled waiting room with refreshments</p>
+            </div>
+            <div class="facility-item">
+                <span class="facility-icon">🛂</span>
+                <p><strong>Easy Registration</strong> - Quick check-in process with minimal paperwork</p>
+            </div>
+            <div class="facility-item">
+                <span class="facility-icon">💳</span>
+                <p><strong>Multiple Payment Options</strong> - Cash, card, M-Pesa, and insurance accepted</p>
+            </div>
+            <div class="facility-item">
+                <span class="facility-icon">📱</span>
+                <p><strong>WiFi Available</strong> - Free WiFi for patients in the waiting area</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Contact Related -->
+    <section class="content-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary>What should I bring when visiting?</summary>
+                <p>Please bring a valid ID, any insurance documents, and a list of current medications. First-time patients should allow 10 minutes for registration.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Do you offer emergency services?</summary>
+                <p>Yes, emergency services are available 24/7. Call +254 700 123 456 and use the emergency hotline for urgent medical situations.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>How can I reach you outside working hours?</summary>
+                <p>Outside clinic hours, you can reach our emergency line at +254 700 123 456 for urgent medical assistance.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Is your clinic accessible for people with disabilities?</summary>
+                <p>Yes, our clinic is fully wheelchair accessible with accessible restrooms and parking. If you need special accommodations, please let us know when booking.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Clinical Office</h3>
+                <p>Delivering healthcare excellence with compassion and professionalism.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>📍 123 Health Street, Nairobi, Kenya</p>
+                <p>📞 +254 700 123 456</p>
+                <p>✉️ info@clinicaloffice.co.ke</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Clinical Office. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

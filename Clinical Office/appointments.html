@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book your appointment at Clinical Office. Simple and secure appointment scheduling with our experienced medical team.">
+    <meta name="keywords" content="appointment booking, schedule, consultation, healthcare">
+    <title>Book Appointment - Clinical Office</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">⚕️</span>
+                <span class="logo-text">Clinical Office</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="appointments.html" class="cta-button active">Book Appointment</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Book Your Appointment</h1>
+        <p>Schedule a consultation with our healthcare professionals</p>
+    </section>
+
+    <!-- Appointment Booking -->
+    <section class="content-section">
+        <div class="appointment-container">
+            <div class="appointment-form-wrapper">
+                <h2>Appointment Booking Form</h2>
+                <p class="form-subtitle">Please fill out the form below. We'll confirm your appointment within 24 hours.</p>
+                
+                <form id="appointmentForm" class="appointment-form">
+                    <!-- Personal Information -->
+                    <fieldset class="form-section">
+                        <legend>Personal Information</legend>
+                        
+                        <div class="form-group">
+                            <label for="fullname">Full Name *</label>
+                            <input 
+                                type="text" 
+                                id="fullname" 
+                                name="fullname" 
+                                placeholder="John Doe" 
+                                required
+                                aria-required="true"
+                            >
+                            <span class="error-message" id="fullname-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="john@example.com" 
+                                required
+                                aria-required="true"
+                            >
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                placeholder="+254 700 123 456" 
+                                required
+                                aria-required="true"
+                            >
+                            <span class="error-message" id="phone-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input 
+                                type="number" 
+                                id="age" 
+                                name="age" 
+                                placeholder="30"
+                                min="0"
+                                max="120"
+                            >
+                        </div>
+                    </fieldset>
+
+                    <!-- Appointment Details -->
+                    <fieldset class="form-section">
+                        <legend>Appointment Details</legend>
+
+                        <div class="form-group">
+                            <label for="service">Service Type *</label>
+                            <select id="service" name="service" required aria-required="true">
+                                <option value="">-- Select a Service --</option>
+                                <option value="general">General Consultation</option>
+                                <option value="chronic">Chronic Disease Management</option>
+                                <option value="medication">Medication Review</option>
+                                <option value="lab">Laboratory Tests</option>
+                                <option value="imaging">Imaging & Ultrasound</option>
+                                <option value="preventive">Preventive Care & Screening</option>
+                                <option value="vaccination">Vaccinations & Immunization</option>
+                                <option value="counseling">Health Education & Counseling</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentDate">Preferred Date *</label>
+                            <input 
+                                type="date" 
+                                id="appointmentDate" 
+                                name="appointmentDate" 
+                                required
+                                aria-required="true"
+                            >
+                            <span class="form-hint">Available Monday - Saturday</span>
+                            <span class="error-message" id="appointmentDate-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointmentTime">Preferred Time *</label>
+                            <select id="appointmentTime" name="appointmentTime" required aria-required="true">
+                                <option value="">-- Select a Time --</option>
+                                <option value="08:00">8:00 AM</option>
+                                <option value="09:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">1:00 PM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                                <option value="17:00">5:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="doctor">Preferred Doctor</label>
+                            <select id="doctor" name="doctor">
+                                <option value="">-- No Preference --</option>
+                                <option value="dr-kipchoge">Dr. James Kipchoge</option>
+                                <option value="dr-ochieng">Dr. Sarah Ochieng</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <!-- Health Information -->
+                    <fieldset class="form-section">
+                        <legend>Health Information</legend>
+
+                        <div class="form-group">
+                            <label for="firstVisit">Is this your first visit?</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="firstVisit" value="yes"> Yes, first visit
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="firstVisit" value="no"> No, returning patient
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reason">Reason for Visit *</label>
+                            <textarea 
+                                id="reason" 
+                                name="reason" 
+                                placeholder="Please describe your main concern or reason for visit"
+                                rows="4"
+                                required
+                                aria-required="true"
+                            ></textarea>
+                            <span class="error-message" id="reason-error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medical">Current Medications or Medical Conditions</label>
+                            <textarea 
+                                id="medical" 
+                                name="medical" 
+                                placeholder="Please list any current medications, allergies, or medical conditions"
+                                rows="4"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="insurance" required aria-required="true">
+                                I have health insurance <span class="optional">(optional)</span>
+                            </label>
+                        </div>
+                    </fieldset>
+
+                    <!-- Additional Notes -->
+                    <fieldset class="form-section">
+                        <legend>Additional Information</legend>
+
+                        <div class="form-group">
+                            <label for="message">Additional Notes</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                placeholder="Any other information you'd like us to know?"
+                                rows="3"
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent" name="consent" required aria-required="true">
+                                I agree to the terms and conditions and privacy policy *
+                            </label>
+                            <span class="error-message" id="consent-error"></span>
+                        </div>
+                    </fieldset>
+
+                    <!-- Submit Button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">Book Appointment</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message" style="display: none;">
+                    <h3>✓ Appointment Request Submitted</h3>
+                    <p>Thank you! We've received your appointment request. Our team will contact you within 24 hours to confirm your appointment.</p>
+                    <p>In the meantime, please ensure your phone and email are reachable.</p>
+                    <a href="index.html" class="btn btn-primary">Return to Home</a>
+                </div>
+            </div>
+
+            <!-- Sidebar Info -->
+            <div class="appointment-sidebar">
+                <h3>Need Assistance?</h3>
+                <p>Can't find a suitable time online? Call us directly.</p>
+                
+                <div class="contact-card">
+                    <h4>📞 Phone</h4>
+                    <p><strong>+254 700 123 456</strong></p>
+                    <p class="small-text">Monday-Saturday: 8:00 AM - 6:00 PM</p>
+                </div>
+
+                <div class="contact-card">
+                    <h4>✉️ Email</h4>
+                    <p><strong>appointments@clinicaloffice.co.ke</strong></p>
+                    <p class="small-text">We respond within 24 hours</p>
+                </div>
+
+                <div class="contact-card">
+                    <h4>📍 Location</h4>
+                    <p><strong>123 Health Street</strong></p>
+                    <p class="small-text">Nairobi, Kenya</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>First Visit?</h4>
+                    <p>Please arrive 10 minutes early to complete registration. Bring a valid ID and any insurance documents if applicable.</p>
+                </div>
+
+                <div class="info-box">
+                    <h4>Cancellation Policy</h4>
+                    <p>Cancellations must be made at least 24 hours in advance. Late cancellations may be subject to a consultation fee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs About Appointments -->
+    <section class="content-section bg-light">
+        <h2>Appointment FAQs</h2>
+        <div class="faq-list">
+            <details class="faq-item">
+                <summary>How long before I get a confirmation?</summary>
+                <p>We typically confirm your appointment within 24 hours via phone or email. If you don't hear from us, please call to confirm.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Can I change my appointment after booking?</summary>
+                <p>Yes! Contact us at least 48 hours before your appointment. We'll do our best to reschedule for your preferred time.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>What if I need to cancel?</summary>
+                <p>Please provide at least 24 hours notice. You can call or email us to cancel. Late cancellations may incur a fee.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>How much does a consultation cost?</summary>
+                <p>Consultation fees vary by service. Pricing will be provided during confirmation. We accept insurance and multiple payment methods.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Do I need to bring anything?</summary>
+                <p>Bring a valid ID, any insurance documents, and a list of current medications. First-time patients should arrive 10 minutes early.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Clinical Office</h3>
+                <p>Delivering healthcare excellence with compassion and professionalism.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="appointments.html">Appointments</a></li>
+                    <li><a href="faq.html">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>📍 123 Health Street, Nairobi, Kenya</p>
+                <p>📞 +254 700 123 456</p>
+                <p>✉️ info@clinicaloffice.co.ke</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Clinical Office. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
