@@ -33,21 +33,24 @@
 
   <main class="container">
     <section class="hero">
-      <h2>We build simple, reliable, scalable software for modern businesses.</h2>
-      <p class="lead">ByteWave helps startups and enterprises design and deliver delightful digital experiences — from product strategy to production.</p>
-      <a class="btn" href="projects.html">See Our Projects</a>
+      <div class="hero-canvas" aria-hidden="true"><canvas id="three-hero"></canvas></div>
+      <div class="hero-content">
+        <h2>We build simple, reliable, scalable software for modern businesses.</h2>
+        <p class="lead">ByteWave helps startups and enterprises design and deliver delightful digital experiences — from product strategy to production.</p>
+        <a class="btn" href="projects.html">See Our Projects</a>
+      </div>
     </section>
 
     <section class="about-grid">
-      <article>
+      <article class="card info-card">
         <h3>Our Vision</h3>
         <p>To empower teams worldwide with intuitive, sustainable software that brings human creativity and automation together.</p>
       </article>
-      <article>
+      <article class="card info-card">
         <h3>Our Mission</h3>
         <p>Deliver high-quality software and strategic partnerships that accelerate product-led growth for ambitious organizations.</p>
       </article>
-      <article>
+      <article class="card info-card">
         <h3>What we do</h3>
         <p>Product design, web & mobile applications, cloud architecture, and ongoing product support.</p>
       </article>
@@ -100,6 +103,8 @@
     <div class="container footer-bottom">© <span id="year"></span> ByteWave — Built with care • <a href="contact.html">Contact</a></div>
   </footer>
 
+  <script src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
+  <script src="js/three-hero.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

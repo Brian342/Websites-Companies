@@ -35,6 +35,19 @@ input,textarea{padding:0.6rem;border:1px solid #e6eefb;border-radius:6px}
 /* responsive */
 @media (max-width:640px){.nav-row{flex-direction:column;gap:0.6rem}.container{padding:1rem}.hero h2{font-size:1.25rem}}
 
+/* About info cards */
+.info-card{padding:1rem;background:linear-gradient(180deg,#fff,#fbfdff);border-radius:8px;min-height:120px;display:flex;flex-direction:column;justify-content:center}
+
+/* Hero canvas for three.js (keeps it behind content) */
+.hero{position:relative;overflow:hidden}
+.hero-canvas{position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.9}
+.hero-canvas canvas{width:100%;height:100%;display:block}
+.hero-content{position:relative;z-index:1}
+
+/* Disable canvas on small screens */
+@media (max-width:760px){.hero-canvas{display:none}}
+
+
 /* Hero background decoration */
 .hero{background-image:url('../images/bg-hero.svg');background-repeat:no-repeat;background-position:right top;background-size:50% auto}
 
