@@ -1,0 +1,36 @@
+/* Simple, clean styles for tech company site */
+:root{--accent:#2b7cff;--muted:#666;--bg:#f8fbff}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;margin:0;color:#111;background:var(--bg);line-height:1.5}
+.container{max-width:1100px;margin:0 auto;padding:2rem}
+.site-header{background:white;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+.nav-row{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:700;margin:0;color:var(--accent)}.logo .dot{color:#111}
+nav{display:flex;gap:0.5rem}
+.nav-item{display:flex;align-items:center;gap:0.5rem;padding:0.6rem 0.8rem;color:var(--muted);text-decoration:none;border-radius:6px}
+.nav-item:hover{background:#f1f5ff;color:var(--accent)}.nav-item.active{color:var(--accent);font-weight:600}
+.icon{width:18px;height:18px;fill:currentColor}
+.hero{background:white;margin:1.5rem 0;padding:2rem;border-radius:8px;box-shadow:0 4px 18px rgba(33,33,33,0.04)}
+.hero h2{margin:0 0 0.5rem;font-size:1.6rem}
+.lead{color:var(--muted)}
+.btn{display:inline-block;background:var(--accent);color:white;padding:0.6rem 1rem;border-radius:6px;text-decoration:none;margin-top:1rem}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1rem 0}
+.reviews{margin:1rem 0}
+.review-card{background:white;padding:1rem;border-radius:8px;box-shadow:0 3px 12px rgba(0,0,0,0.04)}
+blockquote{margin:0;font-style:italic;color:#333}
+cite{display:block;margin-top:0.5rem;color:var(--muted)}
+.review-controls{margin-top:0.5rem}
+.review-controls button{background:#fff;border:1px solid #e6ecff;padding:0.4rem 0.6rem;border-radius:6px;margin-right:0.5rem}
+.cta{background:linear-gradient(90deg,#e8f0ff,#fff);padding:1rem;border-radius:8px;margin-top:1.2rem}
+.site-footer{padding:1rem 0;text-align:center;color:var(--muted)}
+/* Projects, team, contact pages */
+.projects-grid,.team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:1rem 0}
+.card{background:white;padding:1rem;border-radius:8px;box-shadow:0 4px 14px rgba(2,6,23,0.04)}
+.card h4{margin:0 0 0.5rem}
+.small{font-size:0.9rem;color:var(--muted)}
+/* simple form */
+form{display:grid;gap:0.6rem}
+input,textarea{padding:0.6rem;border:1px solid #e6eefb;border-radius:6px}
+.btn-secondary{background:#fff;border:1px solid var(--accent);color:var(--accent)}
+/* responsive */
+@media (max-width:640px){.nav-row{flex-direction:column;gap:0.6rem}.container{padding:1rem}.hero h2{font-size:1.25rem}}

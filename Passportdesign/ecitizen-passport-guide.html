@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCitizen Passport Application</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Page Navigation */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Login Page */
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: white;
+            border-radius: 15px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        .login-box p {
+            text-align: center;
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dashboard Layout */
+        .dashboard-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .dashboard-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dashboard-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .welcome-section h2 {
+            color: #333;
+            font-size: 1.3em;
+        }
+
+        .welcome-section p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* User Profile Card */
+        .user-profile-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .profile-avatar {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            flex-shrink: 0;
+        }
+
+        .profile-info h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .profile-info p {
+            margin: 5px 0 0 0;
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        /* What do you want to do */
+        .what-to-do {
+            color: white;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .service-card h3 {
+            color: #333;
+            margin: 0;
+            font-size: 0.95em;
+            line-height: 1.3;
+        }
+
+        .apply-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .status-bar h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        .status-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .status-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .status-icon {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+
+        .status-number {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 5px 0;
+        }
+
+        .status-label {
+            color: #666;
+            font-size: 0.85em;
+            line-height: 1.3;
+        }
+
+        /* Help Section */
+        .help-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            flex: 1;
+        }
+
+        .help-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .help-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .help-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .help-item:hover {
+            background: #e8eaf6;
+            transform: translateX(5px);
+        }
+
+        .help-icon {
+            font-size: 1.5em;
+        }
+
+        .help-text {
+            color: #333;
+            font-size: 0.95em;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff6b6b;
+            padding: 8px 20px;
+            border-radius: 20px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logout-btn {
+                margin-top: 15px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .login-box {
+                padding: 30px 20px;
+            }
+
+            .dashboard-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .status-items {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Page -->
+        <div id="loginPage" class="page active">
+            <div class="login-container">
+                <div class="login-box">
+                    <h2>🇰🇪 eCitizen</h2>
+                    <p>Passport Application Portal</p>
+                    
+                    <form onsubmit="login(event)">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+
+                        <button type="submit" class="btn">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+            
+            <div class="dashboard-wrapper">
+                <!-- Left Column -->
+                <div class="dashboard-left">
+                    <!-- Welcome Section -->
+                    <div class="welcome-section">
+                        <h2>Welcome back! 👋</h2>
+                        <p>Here's what you can do today</p>
+                    </div>
+
+                    <!-- User Profile Card -->
+                    <div class="user-profile-card">
+                        <div class="profile-avatar">👤</div>
+                        <div class="profile-info">
+                            <h3 id="userName">John Doe</h3>
+                            <p>🆔 KE1234567890</p>
+                            <p id="userEmail">john@example.com</p>
+                        </div>
+                    </div>
+
+                    <!-- What do you want to do -->
+                    <div class="what-to-do">What do you want to do today?</div>
+
+                    <!-- Services Grid -->
+                    <div class="services-grid">
+                        <!-- Apply for Passport -->
+                        <div class="service-card">
+                            <div class="service-icon">📕</div>
+                            <h3>Apply for Passport</h3>
+                            <button class="apply-btn" onclick="startApplication('passport')">Apply Now</button>
+                        </div>
+
+                        <!-- Apply for Interstate Passport -->
+                        <div class="service-card">
+                            <div class="service-icon">✈️</div>
+                            <h3>Apply for Interstate Passport</h3>
+                            <button class="apply-btn" onclick="startApplication('interstate')">Apply Now</button>
+                        </div>
+
+                        <!-- Apply for Temporary Permit -->
+                        <div class="service-card">
+                            <div class="service-icon">📋</div>
+                            <h3>Apply for Temporary Permit</h3>
+                            <button class="apply-btn" onclick="startApplication('temporary')">Apply Now</button>
+                        </div>
+
+                        <!-- Apply for Student Pass -->
+                        <div class="service-card">
+                            <div class="service-icon">🎓</div>
+                            <h3>Apply for Student Pass</h3>
+                            <button class="apply-btn" onclick="startApplication('student')">Apply Now</button>
+                        </div>
+
+                        <!-- Apply for Special Pass -->
+                        <div class="service-card">
+                            <div class="service-icon">🎯</div>
+                            <h3>Apply for Special Pass</h3>
+                            <button class="apply-btn" onclick="startApplication('special')">Apply Now</button>
+                        </div>
+
+                        <!-- Renewal Service -->
+                        <div class="service-card">
+                            <div class="service-icon">🔄</div>
+                            <h3>Passport Renewal</h3>
+                            <button class="apply-btn" onclick="startApplication('renewal')">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="dashboard-right">
+                    <!-- Status Bar -->
+                    <div class="status-bar">
+                        <h3>Your Status</h3>
+                        <div class="status-items">
+                            <div class="status-item">
+                                <div class="status-icon">⏳</div>
+                                <div class="status-number">0</div>
+                                <div class="status-label">Applications in Progress</div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-icon">✅</div>
+                                <div class="status-number">0</div>
+                                <div class="status-label">Completion Service</div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-icon">⚠️</div>
+                                <div class="status-number">0</div>
+                                <div class="status-label">Actions Required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help Section -->
+                    <div class="help-section">
+                        <h3>How can we help you? 🤝</h3>
+                        <div class="help-items">
+                            <div class="help-item">
+                                <div class="help-icon">❓</div>
+                                <div class="help-text">View FAQ</div>
+                            </div>
+                            <div class="help-item">
+                                <div class="help-icon">📞</div>
+                                <div class="help-text">Contact Support</div>
+                            </div>
+                            <div class="help-item">
+                                <div class="help-icon">📖</div>
+                                <div class="help-text">Application Guide</div>
+                            </div>
+                            <div class="help-item">
+                                <div class="help-icon">🕐</div>
+                                <div class="help-text">Check Processing Time</div>
+                            </div>
+                            <div class="help-item">
+                                <div class="help-icon">💬</div>
+                                <div class="help-text">Live Chat Support</div>
+                            </div>
+                            <div class="help-item">
+                                <div class="help-icon">📋</div>
+                                <div class="help-text">Document Checklist</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const name = email.split('@')[0];
+            
+            // Store user data
+            localStorage.setItem('userName', name.charAt(0).toUpperCase() + name.slice(1));
+            localStorage.setItem('userEmail', email);
+            
+            // Update dashboard
+            document.getElementById('userName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
+            document.getElementById('userEmail').textContent = email;
+            
+            // Switch pages
+            document.getElementById('loginPage').classList.remove('active');
+            document.getElementById('dashboardPage').classList.add('active');
+        }
+
+        function logout() {
+            // Clear user data
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userEmail');
+            
+            // Clear form
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            
+            // Switch pages
+            document.getElementById('dashboardPage').classList.remove('active');
+            document.getElementById('loginPage').classList.add('active');
+        }
+
+        function startApplication(type) {
+            let applicationType = '';
+            if (type === 'standard') applicationType = 'Standard Passport';
+            else if (type === 'international') applicationType = 'International Passport';
+            else if (type === 'temporary') applicationType = 'Temporary Permit';
+            
+            alert(`Starting application for: ${applicationType}\n\nYou will be guided through the application steps.`);
+        }
+
+        // Load user data if logged in before
+        window.addEventListener('load', () => {
+            const userName = localStorage.getItem('userName');
+            const userEmail = localStorage.getItem('userEmail');
+            
+            if (userName && userEmail) {
+                document.getElementById('userName').textContent = userName;
+                document.getElementById('userEmail').textContent = userEmail;
+                document.getElementById('loginPage').classList.remove('active');
+                document.getElementById('dashboardPage').classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

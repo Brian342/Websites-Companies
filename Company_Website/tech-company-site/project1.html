@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Taskly — Todo Demo</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style> .todo-app{max-width:520px;margin:1rem auto}.todo-input{display:flex;gap:8px}.todo-list{list-style:none;padding:0;margin-top:1rem}.todo-item{display:flex;justify-content:space-between;padding:0.6rem;border-radius:6px;border:1px solid #eef4ff;margin-bottom:8px;align-items:center}
+.smallbtn{background:#fff;border:1px solid #ddd;padding:0.3rem 0.5rem;border-radius:6px}</style>
+</head>
+<body>
+  <header class="site-header"><div class="container nav-row"><h1 class="logo">ByteWave<span class="dot">.</span></h1><nav><a href="index.html" class="nav-item">Home</a><a href="projects.html" class="nav-item active">Projects</a><a href="team.html" class="nav-item">Team</a><a href="contact.html" class="nav-item">Contact</a></nav></div></header>
+  <main class="container todo-app">
+    <h2>Taskly — Todo Demo</h2>
+    <p class="small">Add tasks, mark complete, and persist them locally (via localStorage).</p>
+    <div class="card">
+      <div class="todo-input">
+        <input id="taskInput" placeholder="New task" />
+        <button id="addTask" class="btn">Add</button>
+      </div>
+      <ul id="tasks" class="todo-list"></ul>
+      <button id="clearCompleted" class="btn btn-secondary" style="margin-top:8px">Clear Completed</button>
+    </div>
+  </main>
+  <footer class="site-footer"><div class="container">© <span id="year"></span> ByteWave — Demo</div></footer>
+  <script>
+    // Todo app
+    const taskInput = document.getElementById('taskInput');
+    const addTaskBtn = document.getElementById('addTask');
+    const tasksEl = document.getElementById('tasks');
+    const clearCompleted = document.getElementById('clearCompleted');
+
+    let tasks = JSON.parse(localStorage.getItem('taskly_tasks')||'[]');
+    function render(){tasksEl.innerHTML='';tasks.forEach((t,i)=>{const li=document.createElement('li');li.className='todo-item';li.innerHTML=`<label><input type="checkbox" ${t.done? 'checked':''} data-index="${i}" /> <span style="margin-left:8px">${t.text}</span></label> <div><button class="smallbtn" data-del="${i}">Delete</button></div>`;tasksEl.appendChild(li)})}
+    function persist(){localStorage.setItem('taskly_tasks',JSON.stringify(tasks));render();}
+    addTaskBtn.addEventListener('click',()=>{const v=taskInput.value.trim();if(!v) return;tasks.push({text:v,done:false});taskInput.value='';persist()});
+    tasksEl.addEventListener('change',(e)=>{if(e.target.matches('input[type=checkbox]')){const i=+e.target.dataset.index;tasks[i].done=e.target.checked;persist()}});
+    tasksEl.addEventListener('click',(e)=>{if(e.target.matches('[data-del]')){const i=+e.target.getAttribute('data-del');tasks.splice(i,1);persist()}});
+    clearCompleted.addEventListener('click',()=>{tasks = tasks.filter(t=>!t.done);persist()});
+    render();
+  </script>
+</body>
+</html>
