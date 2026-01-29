@@ -34,7 +34,33 @@
       </div>
     </section>
   </main>
-  <footer class="site-footer"><div class="container">© <span id="year"></span> ByteWave — Projects</div></footer>
+  <footer class="site-footer">
+    <div class="footer-decor" aria-hidden="true"></div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3 class="logo">ByteWave<span class="dot">.</span></h3>
+        <p class="small">We build simple, reliable software for modern businesses.</p>
+      </div>
+      <div class="footer-feedback">
+        <h4>Feedback</h4>
+        <form id="footerFeedbackForm">
+          <input id="fb-email" type="email" placeholder="Your email" required />
+          <textarea id="fb-message" rows="2" placeholder="Message"></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <div id="fb-response" class="small" style="margin-top:.5rem"></div>
+      </div>
+      <div class="footer-social">
+        <h4>Follow</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter" class="social">Twitter</a>
+          <a href="#" aria-label="LinkedIn" class="social">LinkedIn</a>
+          <a href="#" aria-label="GitHub" class="social">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">© <span id="year"></span> ByteWave — Built with care • <a href="contact.html">Contact</a></div>
+  </footer>
   <script src="js/main.js"></script>
 </body>
 </html>

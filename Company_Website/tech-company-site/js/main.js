@@ -17,4 +17,22 @@ const yearEl = document.getElementById('year'); if(yearEl) yearEl.textContent = 
 document.querySelectorAll('.nav-item').forEach(a=>{a.addEventListener('click',()=>{document.querySelectorAll('.nav-item').forEach(x=>x.classList.remove('active'));a.classList.add('active')})});
 // Contact form handling (client-side)
 const contactForm = document.querySelector('#contactForm');
-if(contactForm){contactForm.addEventListener('submit', (e)=>{e.preventDefault();const name = contactForm.querySelector('#name').value; const email = contactForm.querySelector('#email').value; const message = contactForm.querySelector('#message').value; if(!name||!email||!message){alert('Please complete all fields.');return;} contactForm.innerHTML = `<div class="card"><h3>Thanks, ${name}!</h3><p>We received your message and will contact you at <strong>${email}</strong>.</p></div>`;})}
+if(contactForm){
+  contactForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = contactForm.querySelector('#name').value; const email = contactForm.querySelector('#email').value; const message = contactForm.querySelector('#message').value;
+    if(!name||!email||!message){alert('Please complete all fields.');return;} 
+    contactForm.innerHTML = `<div class="card"><h3>Thanks, ${name}!</h3><p>We received your message and will contact you at <strong>${email}</strong>.</p></div>`;
+  })
+}
+
+// Footer feedback form (client-side)
+const fbForm = document.querySelector('#footerFeedbackForm');
+if(fbForm){
+  fbForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    const email = fbForm.querySelector('#fb-email').value; const message = fbForm.querySelector('#fb-message').value; const res = document.getElementById('fb-response');
+    if(!email||!message){res.textContent = 'Please complete both fields.';res.style.color='red';return;} 
+    res.style.color=''; res.textContent = 'Thanks! We received your feedback.'; fbForm.reset();
+  })
+}

@@ -34,3 +34,19 @@ input,textarea{padding:0.6rem;border:1px solid #e6eefb;border-radius:6px}
 .btn-secondary{background:#fff;border:1px solid var(--accent);color:var(--accent)}
 /* responsive */
 @media (max-width:640px){.nav-row{flex-direction:column;gap:0.6rem}.container{padding:1rem}.hero h2{font-size:1.25rem}}
+
+/* Hero background decoration */
+.hero{background-image:url('../images/bg-hero.svg');background-repeat:no-repeat;background-position:right top;background-size:50% auto}
+
+/* Footer layout and styling */
+.site-footer{padding:0 0 2rem 0;color:var(--muted);position:relative;margin-top:2rem}
+.footer-decor{height:72px;background-image:url('../images/footer-decor.svg');background-repeat:no-repeat;background-position:center top;background-size:cover;}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 200px;gap:1.2rem;padding:1.2rem 0}
+.footer-grid h4{margin:0 0 0.5rem}
+.footer-grid .small{margin-top:0.25rem}
+.footer-feedback input,#fb-email{width:100%}
+.footer-feedback textarea,#fb-message{width:100%}
+.footer-feedback form{display:grid;gap:0.5rem}
+.footer-social .social{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px;margin-right:8px;background:#fff;border:1px solid #eef6ff;color:var(--accent);text-decoration:none}
+.footer-bottom{border-top:1px solid #eef6ff;padding:0.75rem 0;margin-top:0.75rem;font-size:0.95rem}
+@media (max-width:760px){.footer-grid{grid-template-columns:1fr;gap:0.75rem}.footer-social{display:flex;gap:0.5rem}}
