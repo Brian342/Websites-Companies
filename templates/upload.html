@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Upload{% endblock %}
+
+{% block content %}
+  <h1 class="page-title">Upload</h1>
+  <p class="page-subtitle">Add or drag files here. Your upload logic can be wired in the backend.</p>
+
+  <div class="card">
+    <form method="post" enctype="multipart/form-data">
+      <div class="upload-zone">
+        <p>Drag and drop files here or choose a file below.</p>
+        <input type="file" name="file" accept="*" class="mb-2">
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </div>
+    </form>
+  </div>
+{% endblock %}

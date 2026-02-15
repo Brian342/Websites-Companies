@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <section class="hero">
+    {% if user_name %}
+      <h1>Welcome <span class="welcome-name">{{ user_name }}</span>, let's see how it works</h1>
+      <p>You're signed in. Use the menu above to upload files, view your dashboard, or change settings.</p>
+    {% else %}
+      <h1>Welcome to My App</h1>
+      <p>Sign in to personalize your experience. Your name will appear here and you can use Upload, Dashboard, and Settings.</p>
+      <a href="{{ url_for('login') }}" class="btn btn-primary">Sign in</a>
+    {% endif %}
+  </section>
+{% endblock %}

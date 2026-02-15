@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}App{% endblock %} | My App</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-wrap">
+    <header class="site-header">
+      <div class="nav-inner">
+        <a href="{{ url_for('home') }}" class="logo">My App</a>
+        <nav class="nav-links">
+          <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+          <a href="{{ url_for('upload') }}" class="{{ 'active' if request.endpoint == 'upload' else '' }}">Upload</a>
+          <a href="{{ url_for('dashboard') }}" class="{{ 'active' if request.endpoint == 'dashboard' else '' }}">Dashboard</a>
+          <a href="{{ url_for('settings') }}" class="{{ 'active' if request.endpoint == 'settings' else '' }}">Settings</a>
+          {% if user_name %}
+            <span class="user-badge">Hi, <strong>{{ user_name }}</strong></span>
+            <a href="{{ url_for('logout') }}" class="btn btn-ghost">Sign out</a>
+          {% else %}
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Sign in</a>
+          {% endif %}
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul class="flashes">
+            {% for category, message in messages %}
+              <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

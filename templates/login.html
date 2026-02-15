@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+
+{% block content %}
+  <h1 class="page-title">Sign in</h1>
+  <p class="page-subtitle">Enter your name to sign in. You'll see a welcome message on the home page.</p>
+
+  <div class="card settings-section">
+    <form method="post">
+      <div class="form-group">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" placeholder="e.g. Alex" required autofocus>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+  </div>
+{% endblock %}
